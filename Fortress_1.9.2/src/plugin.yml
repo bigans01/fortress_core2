@@ -1,0 +1,19 @@
+name: Fortress
+description: Fortress trap and fortification mod.
+author: bigans01
+website: www.nothinghere.com
+depend: [ProtocolLib]
+commands:
+  fortadmin:
+    description: test.
+    permission: fortress.fortadmin
+    usage: "syntax: /fortadmin <subcommand> <subcommand arg 1> ... "
+  forthelp:
+    description: helpful URLs
+  fort:
+    description: Standard Fortress (for non-admins) command precursor. 
+    permission: fortress.fort
+    usage: "syntax: /fort <subcommand> <subcommand arg 1> ... " 
+version: 1.0
+main: fortress.plugin.fortress_root
+load: STARTUP
