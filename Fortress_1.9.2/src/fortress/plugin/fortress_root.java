@@ -1062,20 +1062,44 @@ public class fortress_root extends JavaPlugin implements Listener
 			}
 		}
 		
+
+		
 		if(label.equalsIgnoreCase("forthelp") && args.length == 0)
 		{
 			Player player = (Player) sender;
 			TextComponent URLmsg = new TextComponent("Fortress tutorial video: ");
 			URLmsg.setColor(ChatColor.GOLD);
 			TextComponent URLmsg2 = new TextComponent(" YouTube ");
-			URLmsg.setColor(ChatColor.WHITE);
-			URLmsg.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "http://spigotmc.org" ) );
+			//URLmsg.setColor(ChatColor.WHITE);
+			URLmsg2.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "http://spigotmc.org" ) );
+			URLmsg2.setColor(ChatColor.WHITE);
 			URLmsg.addExtra(URLmsg2);
 			player.spigot().sendMessage(URLmsg);
 			
+			// fort help index header
 			ComponentBuilder indexString = rootstringbuilder.returnFortHelpIndex();
 			player.spigot().sendMessage(indexString.create());
-			//return false;
+			
+			
+			// 1st line below forthelp index
+			TextComponent createfort = rootstringbuilder.fortHelpCreatefort();
+			TextComponent addmember = rootstringbuilder.fortHelpAddmember();
+			TextComponent removemember = rootstringbuilder.fortHelpRemovemember();
+			
+			
+			player.spigot().sendMessage(createfort, addmember, removemember);
+		}
+		
+		if(label.equalsIgnoreCase("forthelp") && args.length == 1)
+		{
+			Player player = (Player) sender;
+			if (args[0].equals("createfort"))
+			{
+				ComponentBuilder fstring = rootstringbuilder.returnDescCreatefort();
+				player.spigot().sendMessage(fstring.create());
+			}
+			
+			
 		}
 		
 		if(label.equalsIgnoreCase("fortadmin") && args.length == 0)
