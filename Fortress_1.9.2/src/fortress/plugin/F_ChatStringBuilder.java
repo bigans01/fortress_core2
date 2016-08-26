@@ -3,7 +3,9 @@ package fortress.plugin;
 import org.bukkit.entity.Horse.Color;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class F_ChatStringBuilder {
 	public ComponentBuilder constructErrorStringFortressAlreadyExists(String fortresstochange)
@@ -793,7 +795,7 @@ public class F_ChatStringBuilder {
 		
 		// info of header
 		finalString.append("|    ");
-		finalString.append("Type /forthelp, followed by a command below for details  "); //| \n| on that command. Yellow commands are admin only! ");
+		finalString.append("Click on a command below, or type /forthelp <command name> for descriptions on that command.  "); //| \n| on that command. Yellow commands are admin only! ");
 		finalString.append("|");
 		finalString.color(ChatColor.GREEN);
 		finalString.append("\n|");
@@ -805,5 +807,61 @@ public class F_ChatStringBuilder {
 		finalString.append("-----------------------------------------------------");
 		
 		return finalString;
+	}
+	
+	public TextComponent fortHelpCreatefort()
+	{
+		TextComponent finalText = new TextComponent("createfort   ");
+		finalText.setColor(ChatColor.AQUA);
+		finalText.setClickEvent( new ClickEvent (ClickEvent.Action.RUN_COMMAND, "/forthelp createfort"));
+		return finalText;
+	}
+	
+	public TextComponent fortHelpAddmember()
+	{
+		TextComponent finalText = new TextComponent("addmember    ");
+		finalText.setColor(ChatColor.AQUA);
+		finalText.setClickEvent( new ClickEvent (ClickEvent.Action.RUN_COMMAND, "/forthelp addmember"));
+		return finalText;
+	}
+	
+	public TextComponent fortHelpRemovemember()
+	{
+		TextComponent finalText = new TextComponent("removemember ");
+		finalText.setColor(ChatColor.AQUA);
+		finalText.setClickEvent( new ClickEvent (ClickEvent.Action.RUN_COMMAND, "/forthelp removemember"));
+		return finalText;
+	}
+	
+	public ComponentBuilder returnDescCreatefort()
+	{
+		ComponentBuilder finalString = new ComponentBuilder("--------"); //Fortress Help------------------\n");
+		finalString.color(ChatColor.DARK_BLUE);
+		finalString.append("createfort");
+		finalString.color(ChatColor.AQUA);
+		finalString.append("--------");
+		finalString.color(ChatColor.DARK_BLUE);
+		finalString.append("\n");
+		
+		finalString.append("Description: ");
+		finalString.color(ChatColor.BLUE);
+		finalString.append(" creates a new fort, and prepares the next clicked chest to be the fortress' heart.");
+		finalString.color(ChatColor.WHITE);
+		finalString.append("\n");
+		
+		finalString.append("Usage: ");
+		finalString.color(ChatColor.BLUE);
+		finalString.append(" Admins: ");
+		finalString.color(ChatColor.YELLOW);
+		finalString.append("/fortadmin createfort <fort name> <owner>");
+		finalString.color(ChatColor.WHITE);
+		finalString.append("\n");
+		finalString.append("            Normal: ");
+		finalString.color(ChatColor.AQUA);
+		finalString.append("/fort createfort <fort name>");
+		finalString.color(ChatColor.WHITE);
+		
+		return finalString;
+		
 	}
 }
